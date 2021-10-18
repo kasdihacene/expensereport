@@ -11,15 +11,12 @@ public class ExpenseReport {
         System.out.println("Expenses " + date);
 
         for (Expense expense : expenses) {
+
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
                 mealExpenses += expense.amount;
             }
 
-            String mealOverExpensesMarker =
-                    expense.type == ExpenseType.DINNER && expense.amount > 5000
-                            || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000 ?
-                            "X" :
-                            " ";
+            String mealOverExpensesMarker = expense.computeMealOverExpensesMarker();
 
             System.out.println(expense.type.value() + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
 
