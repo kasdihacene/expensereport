@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 class ExpenseReportTest {
@@ -22,10 +24,12 @@ class ExpenseReportTest {
 
         // Act
         List<Expense> expenses = List.of(expense);
-        expenseReport.printReport(expenses);
+        Date date = new GregorianCalendar(2021, 2, 11).getTime();
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
+        Assertions.assertEquals("Expenses Thu Mar 11 00:00:00 CET 2021", consoleOutputs[0]);
         Assertions.assertEquals(String.format("Dinner\t%d\t ", expense.amount), consoleOutputs[1]);
         Assertions.assertEquals(String.format("Meal expenses: %d", expense.amount), consoleOutputs[2]);
         Assertions.assertEquals(String.format("Total expenses: %d", expense.amount), consoleOutputs[3]);
@@ -44,10 +48,12 @@ class ExpenseReportTest {
 
         // Act
         List<Expense> expenses = List.of(expense);
-        expenseReport.printReport(expenses);
+        Date date = new GregorianCalendar(2021, 2, 11).getTime();
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
+        Assertions.assertEquals("Expenses Thu Mar 11 00:00:00 CET 2021", consoleOutputs[0]);
         Assertions.assertEquals(String.format("Dinner\t%d\tX", expense.amount), consoleOutputs[1]);
         Assertions.assertEquals(String.format("Meal expenses: %d", expense.amount), consoleOutputs[2]);
         Assertions.assertEquals(String.format("Total expenses: %d", expense.amount), consoleOutputs[3]);
@@ -73,10 +79,12 @@ class ExpenseReportTest {
         expenses.add(dinnerExpense);
         expenses.add(breakfastExpense);
 
-        expenseReport.printReport(expenses);
+        Date date = new GregorianCalendar(2021, 2, 11).getTime();
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
+        Assertions.assertEquals("Expenses Thu Mar 11 00:00:00 CET 2021", consoleOutputs[0]);
         Assertions.assertEquals(String.format("Dinner\t%d\tX", dinnerExpense.amount), consoleOutputs[1]);
         Assertions.assertEquals(String.format("Breakfast\t%d\t ", breakfastExpense.amount), consoleOutputs[2]);
         Assertions.assertEquals(String.format("Meal expenses: %d", breakfastExpense.amount + dinnerExpense.amount), consoleOutputs[3]);
@@ -103,10 +111,12 @@ class ExpenseReportTest {
         expenses.add(dinnerExpense);
         expenses.add(carRentExpense);
 
-        expenseReport.printReport(expenses);
+        Date date = new GregorianCalendar(2021, 2, 11).getTime();
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
+        Assertions.assertEquals("Expenses Thu Mar 11 00:00:00 CET 2021", consoleOutputs[0]);
         Assertions.assertEquals(String.format("Dinner\t%d\tX", dinnerExpense.amount), consoleOutputs[1]);
         Assertions.assertEquals(String.format("Car Rental\t%d\t ", carRentExpense.amount), consoleOutputs[2]);
         Assertions.assertEquals(String.format("Meal expenses: %d", dinnerExpense.amount), consoleOutputs[3]);
