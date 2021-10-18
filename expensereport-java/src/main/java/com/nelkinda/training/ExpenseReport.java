@@ -37,7 +37,11 @@ public class ExpenseReport {
                 break;
             }
 
-            String mealOverExpensesMarker = expense.type == ExpenseType.DINNER && expense.amount > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000 ? "X" : " ";
+            String mealOverExpensesMarker =
+                    expense.type == ExpenseType.DINNER && expense.amount > 5000
+                            || expense.type == ExpenseType.BREAKFAST && expense.amount > 1000 ?
+                            "X" :
+                            " ";
 
             System.out.println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker);
 
