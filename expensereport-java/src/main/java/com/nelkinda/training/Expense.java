@@ -16,4 +16,8 @@ class Expense {
                 X_MARKER :
                 NO_MARKER;
     }
+
+    boolean isMeal() {
+        return type == ExpenseType.DINNER || type == ExpenseType.BREAKFAST;
+    }
 }
