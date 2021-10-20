@@ -10,14 +10,14 @@ public class ExpenseReport {
 
         System.out.println("Expenses " + date);
 
-        for (Expense mealExpense : expenses) {
+        for (Expense expense : expenses) {
 
-            if (mealExpense.type.isMeal()) {
-                mealExpenses += mealExpense.amount;
+            if (expense.type.isMeal()) {
+                mealExpenses += expense.amount;
             }
-            total += mealExpense.amount;
+            total += expense.amount;
 
-            mealExpense.print();
+            expense.print();
         }
 
 

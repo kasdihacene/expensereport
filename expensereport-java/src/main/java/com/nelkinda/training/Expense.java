@@ -1,17 +1,19 @@
 package com.nelkinda.training;
 
+
 import static java.lang.System.out;
 
-public abstract class Expense {
-    protected static final String X_MARKER = "X";
-    protected static final String NO_MARKER = " ";
+class Expense {
 
-    protected ExpenseType type;
-    protected int amount;
+    ExpenseType type;
+    int amount;
 
-    abstract String computeMealOverExpensesMarker();
+    public Expense(ExpenseType type, int amount) {
+        this.type = type;
+        this.amount = amount;
+    }
 
     void print() {
-        out.println(type.value() + "\t" + amount + "\t" + computeMealOverExpensesMarker());
+        out.println(type.value() + "\t" + amount + "\t" + type.exceedLimit(amount));
     }
 }
