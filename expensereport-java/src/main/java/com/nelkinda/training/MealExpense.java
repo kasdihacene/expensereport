@@ -10,14 +10,7 @@ class MealExpense extends Expense {
 
     @Override
     public String computeMealOverExpensesMarker() {
-        return
-                this.type.exceedLimit(amount) ?
-                        X_MARKER :
-                        NO_MARKER;
+        return this.type.exceedLimit(amount);
     }
 
-    @Override
-    public boolean isMeal() {
-        return true;
-    }
 }

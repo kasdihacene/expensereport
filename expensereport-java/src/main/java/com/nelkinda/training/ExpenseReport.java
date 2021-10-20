@@ -12,7 +12,7 @@ public class ExpenseReport {
 
         for (Expense mealExpense : expenses) {
 
-            if (mealExpense.isMeal()) {
+            if (mealExpense.type.isMeal()) {
                 mealExpenses += mealExpense.amount;
             }
             total += mealExpense.amount;

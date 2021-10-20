@@ -4,26 +4,28 @@ enum ExpenseType {
 
     DINNER("Dinner", 5000, true) {
         @Override
-        boolean exceedLimit(int amount) {
-            return amount > 5000;
+        String exceedLimit(int amount) {
+            return amount > 5000 ? X_MARKER : NO_MARKER;
         }
     },
     BREAKFAST("Breakfast", 1000, true) {
         @Override
-        boolean exceedLimit(int amount) {
-            return amount > 1000;
+        String exceedLimit(int amount) {
+            return amount > 1000 ? X_MARKER : NO_MARKER;
         }
     },
     CAR_RENTAL("Car Rental", 0, false) {
         @Override
-        boolean exceedLimit(int amount) {
-            return false;
+        String exceedLimit(int amount) {
+            return NO_MARKER;
         }
     };
 
     private final String value;
     private final int amountLimit;
     private final boolean isMeal;
+    private static final String X_MARKER = "X";
+    private static final String NO_MARKER = " ";
 
     ExpenseType(String value, int amountLimit, boolean isMeal) {
         this.value = value;
@@ -35,6 +37,11 @@ enum ExpenseType {
         return value;
     }
 
+    boolean isMeal() {
+        return isMeal;
+    }
 
-    abstract boolean exceedLimit(int amount);
+
+    abstract String exceedLimit(int amount);
+
 }

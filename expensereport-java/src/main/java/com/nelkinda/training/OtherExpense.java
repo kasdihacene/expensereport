@@ -12,9 +12,4 @@ public class OtherExpense extends Expense {
         return NO_MARKER;
     }
 
-    @Override
-    boolean isMeal() {
-        return false;
-    }
-
 }
