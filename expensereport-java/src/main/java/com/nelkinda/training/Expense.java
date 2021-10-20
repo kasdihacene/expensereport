@@ -1,23 +1,21 @@
 package com.nelkinda.training;
 
-class Expense {
-    private static final String X_MARKER = "X";
-    private static final String NO_MARKER = " ";
-    private static final int DINNER_MAX_AMOUNT = 5000;
-    private static final int BREAKFAST_MAX_AMOUNT = 1000;
+import static java.lang.System.out;
 
-    ExpenseType type;
-    int amount;
+public abstract class Expense {
+    protected static final String X_MARKER = "X";
+    protected static final String NO_MARKER = " ";
+    protected static final int DINNER_MAX_AMOUNT = 5000;
+    protected static final int BREAKFAST_MAX_AMOUNT = 1000;
 
-    public String computeMealOverExpensesMarker() {
-        return this.type ==
-                ExpenseType.DINNER && this.amount > DINNER_MAX_AMOUNT ||
-                this.type == ExpenseType.BREAKFAST && this.amount > BREAKFAST_MAX_AMOUNT ?
-                X_MARKER :
-                NO_MARKER;
-    }
+    protected ExpenseType type;
+    protected int amount;
 
-    boolean isMeal() {
-        return type == ExpenseType.DINNER || type == ExpenseType.BREAKFAST;
+    abstract String computeMealOverExpensesMarker();
+
+    abstract boolean isMeal();
+
+    void print() {
+        out.println(type.value() + "\t" + amount + "\t" + computeMealOverExpensesMarker());
     }
 }

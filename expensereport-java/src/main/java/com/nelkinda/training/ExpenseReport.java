@@ -10,16 +10,16 @@ public class ExpenseReport {
 
         System.out.println("Expenses " + date);
 
-        for (Expense expense : expenses) {
+        for (Expense mealExpense : expenses) {
 
-            if (expense.isMeal()) {
-                mealExpenses += expense.amount;
+            if (mealExpense.isMeal()) {
+                mealExpenses += mealExpense.amount;
             }
+            total += mealExpense.amount;
 
-            System.out.println(expense.type.value() + "\t" + expense.amount + "\t" + expense.computeMealOverExpensesMarker());
-
-            total += expense.amount;
+            mealExpense.print();
         }
+
 
         System.out.println("Meal expenses: " + mealExpenses);
         System.out.println("Total expenses: " + total);
