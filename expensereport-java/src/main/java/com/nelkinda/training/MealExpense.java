@@ -3,7 +3,7 @@ package com.nelkinda.training;
 
 class MealExpense extends Expense {
 
-    public MealExpense(ExpenseType type, int amount){
+    public MealExpense(ExpenseType type, int amount) {
         this.type = type;
         this.amount = amount;
     }
@@ -11,10 +11,9 @@ class MealExpense extends Expense {
     @Override
     public String computeMealOverExpensesMarker() {
         return
-                this.type == ExpenseType.DINNER && this.amount > DINNER_MAX_AMOUNT ||
-                this.type == ExpenseType.BREAKFAST && this.amount > BREAKFAST_MAX_AMOUNT ?
-                X_MARKER :
-                NO_MARKER;
+                this.type.exceedLimit(amount) ?
+                        X_MARKER :
+                        NO_MARKER;
     }
 
     @Override
