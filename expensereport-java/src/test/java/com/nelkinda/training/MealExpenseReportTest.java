@@ -1,4 +1,5 @@
 package com.nelkinda.training;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,14 +18,12 @@ class MealExpenseReportTest {
         final ByteArrayOutputStream outputStream = buildConsoleCapture();
 
         ExpenseReport expenseReport = new ExpenseReport();
-        MealExpense mealExpense = new MealExpense();
-        mealExpense.amount = 4000;
-        mealExpense.type = ExpenseType.DINNER;
+        MealExpense mealExpense = new MealExpense(ExpenseType.DINNER, 4000);
 
         // Act
-        List<Expense> expens = List.of(mealExpense);
+        List<Expense> expenses = List.of(mealExpense);
         Date date = new GregorianCalendar(2021, 2, 11).getTime();
-        expenseReport.printReport(expens, date);
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
@@ -41,14 +40,12 @@ class MealExpenseReportTest {
         final ByteArrayOutputStream outputStream = buildConsoleCapture();
 
         ExpenseReport expenseReport = new ExpenseReport();
-        Expense mealExpense = new MealExpense();
-        mealExpense.amount = 5001;
-        mealExpense.type = ExpenseType.DINNER;
+        Expense mealExpense = new MealExpense(ExpenseType.DINNER, 5001);
 
         // Act
-        List<Expense> expens = List.of(mealExpense);
+        List<Expense> expenses = List.of(mealExpense);
         Date date = new GregorianCalendar(2021, 2, 11).getTime();
-        expenseReport.printReport(expens, date);
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
@@ -65,21 +62,16 @@ class MealExpenseReportTest {
         final ByteArrayOutputStream outputStream = buildConsoleCapture();
 
         ExpenseReport expenseReport = new ExpenseReport();
-        Expense dinnerMealExpense = new MealExpense();
-        dinnerMealExpense.amount = 5001;
-        dinnerMealExpense.type = ExpenseType.DINNER;
-
-        Expense breakfastMealExpense = new MealExpense();
-        breakfastMealExpense.amount = 300;
-        breakfastMealExpense.type = ExpenseType.BREAKFAST;
+        Expense dinnerMealExpense = new MealExpense(ExpenseType.DINNER, 5001);
+        Expense breakfastMealExpense = new MealExpense(ExpenseType.BREAKFAST,300);
 
         // Act
-        List<Expense> expens = new ArrayList<>();
-        expens.add(dinnerMealExpense);
-        expens.add(breakfastMealExpense);
+        List<Expense> expenses = new ArrayList<>();
+        expenses.add(dinnerMealExpense);
+        expenses.add(breakfastMealExpense);
 
         Date date = new GregorianCalendar(2021, 2, 11).getTime();
-        expenseReport.printReport(expens, date);
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
@@ -97,21 +89,16 @@ class MealExpenseReportTest {
         final ByteArrayOutputStream outputStream = buildConsoleCapture();
 
         ExpenseReport expenseReport = new ExpenseReport();
-        MealExpense dinnerMealExpense = new MealExpense();
-        dinnerMealExpense.amount = 5001;
-        dinnerMealExpense.type = ExpenseType.DINNER;
-
-        Expense carRentMealExpense = new OtherExpense();
-        carRentMealExpense.amount = 300;
-        carRentMealExpense.type = ExpenseType.CAR_RENTAL;
+        MealExpense dinnerMealExpense = new MealExpense(ExpenseType.DINNER, 5001);
+        Expense carRentMealExpense = new OtherExpense(ExpenseType.CAR_RENTAL,300);
 
         // Act
-        List<Expense> expens = new ArrayList<>();
-        expens.add(dinnerMealExpense);
-        expens.add(carRentMealExpense);
+        List<Expense> expenses = new ArrayList<>();
+        expenses.add(dinnerMealExpense);
+        expenses.add(carRentMealExpense);
 
         Date date = new GregorianCalendar(2021, 2, 11).getTime();
-        expenseReport.printReport(expens, date);
+        expenseReport.printReport(expenses, date);
 
         // Assert
         String[] consoleOutputs = outputStream.toString().split("\n");
